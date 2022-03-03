@@ -1,0 +1,5 @@
+const DEFAULT_CURRENCY = 'EUR';
+
+const DEFAULT_LOCALE = 'es-ES';
+
+export { DEFAULT_CURRENCY, DEFAULT_LOCALE };
