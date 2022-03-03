@@ -1,6 +1,5 @@
-import { formatCurrency } from '../formatCurrency';
-
 import { DEFAULT_LOCALE } from '../../Locale.definition';
+import { formatCurrency } from '../formatCurrency';
 
 const TESTS = {
   'es-ES': {

@@ -1,6 +1,5 @@
-import { formatDate } from '../formatDate';
-
 import { DEFAULT_LOCALE } from '../../Locale.definition';
+import { formatDate } from '../formatDate';
 
 const TESTS = {
   'es-ES': {
