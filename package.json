@@ -1,6 +1,6 @@
 {
   "name": "@soyjavi/locale",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": "https://github.com/soyjavi/react-locale",
   "author": "JΛVI <hello@soyjavi.com>",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "test": "node scripts/test.js --watchAll=false",
     "test:watch": "node scripts/test.js",
     "pipeline": "yarn lint && yarn test && yarn build && yarn publish",
-    "postversion": "git push --set-upstream origin master && git push --tags",
+    "postversion": "git push --set-upstream origin main && git push --tags",
     "publish": "yarn version --patch && npm publish --access public"
   },
   "dependencies": {
