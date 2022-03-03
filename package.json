@@ -1,6 +1,6 @@
 {
   "name": "@soyjavi/locale",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "repository": "https://github.com/soyjavi/react-locale",
   "author": "JΛVI <hello@soyjavi.com>",
   "license": "MIT",
@@ -13,11 +13,11 @@
     "start": "react-scripts start",
     "build": "node scripts/build.js",
     "lint": "eslint --cache --fix --format codeframe --ext .jsx,.js src",
-    "test": "node scripts/test.js --watchAll=false",
-    "test:watch": "node scripts/test.js",
-    "pipeline": "yarn lint && yarn test && yarn build && yarn publish",
+    "test": "react-scripts test --passWithNoTests --watchAll=false",
+    "test:watch": "react-scripts test --passWithNoTests",
+    "pipeline": "yarn lint && yarn test && yarn build && yarn publish:release",
     "postversion": "git push --set-upstream origin main && git push --tags",
-    "publish": "yarn version --patch && npm publish --access public"
+    "publish:release": "yarn version --patch && npm publish --access public"
   },
   "dependencies": {
     "react": "^17.0.2",
