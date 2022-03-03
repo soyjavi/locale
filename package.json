@@ -1,7 +1,7 @@
 {
   "name": "@soyjavi/locale",
-  "version": "1.0.6",
-  "repository": "https://github.com/soyjavi/react-locale",
+  "version": "1.0.7",
+  "repository": "https://github.com/soyjavi/locale",
   "author": "JΛVI <hello@soyjavi.com>",
   "license": "MIT",
   "main": "build/index.js",
