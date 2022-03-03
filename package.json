@@ -1,6 +1,6 @@
 {
   "name": "@soyjavi/locale",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "repository": "https://github.com/soyjavi/locale",
   "author": "JΛVI <hello@soyjavi.com>",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "test:watch": "react-scripts test --passWithNoTests",
     "pipeline": "yarn lint && yarn test && yarn build && yarn publish:release",
     "postversion": "git push --set-upstream origin main && git push --tags",
-    "publish:release": "yarn version --patch && npm publish --access public"
+    "publish:release": "yarn version --patch && yarn publish --access public"
   },
   "dependencies": {
     "react": "^17.0.2",
