@@ -1,5 +1,5 @@
 import { DEFAULT_LOCALE } from '../../Locale.definition';
-import { formatCurrency } from '../formatCurrency';
+import { currencyFormat } from '../currencyFormat';
 
 const TESTS = {
   'es-ES': {
@@ -39,26 +39,26 @@ const TESTS = {
   },
 };
 
-describe('formatCurrency()', () => {
+describe('currencyFormat()', () => {
   const currency = 'GBP';
   const value = 1219.95;
   const test = TESTS[DEFAULT_LOCALE];
 
-  it('should be sane', () => expect(formatCurrency()).toEqual(test.locale));
+  it('should be sane', () => expect(currencyFormat()).toEqual(test.locale));
 
-  it('with currency', () => expect(formatCurrency({ currency })).toEqual(test.currency));
+  it('with currency', () => expect(currencyFormat({ currency })).toEqual(test.currency));
 
-  it(`with value`, () => expect(formatCurrency({ value })).toEqual(test.value));
+  it(`with value`, () => expect(currencyFormat({ value })).toEqual(test.value));
 
   Object.keys(TESTS).forEach((locale) =>
     describe(`locale:${locale}`, () => {
       const test = TESTS[locale];
 
-      it('with currency', () => expect(formatCurrency({ locale, currency })).toEqual(test.currency));
+      it('with currency', () => expect(currencyFormat({ locale, currency })).toEqual(test.currency));
 
-      it(`with locale`, () => expect(formatCurrency({ locale })).toEqual(test.locale));
+      it(`with locale`, () => expect(currencyFormat({ locale })).toEqual(test.locale));
 
-      it(`with value`, () => expect(formatCurrency({ locale, value })).toEqual(test.value));
+      it(`with value`, () => expect(currencyFormat({ locale, value })).toEqual(test.value));
     }),
   );
 });

@@ -1,5 +1,5 @@
 import { DEFAULT_LOCALE } from '../../Locale.definition';
-import { formatDate } from '../formatDate';
+import { dateFormat } from '../dateFormat';
 
 const TESTS = {
   'es-ES': {
@@ -28,25 +28,25 @@ const TESTS = {
   },
 };
 
-describe('formatDate()', () => {
+describe('modules/dateFormat()', () => {
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const value = new Date(2020, 0, 1);
 
   const test = TESTS[DEFAULT_LOCALE];
 
-  it('should be sane', () => expect(formatDate()).toEqual('10/4/1980'));
+  it('should be sane', () => expect(dateFormat()).toEqual('10/4/1980'));
 
-  it('with options', () => expect(formatDate({ options })).toEqual(test.options));
+  it('with options', () => expect(dateFormat({ options })).toEqual(test.options));
 
-  it('with value', () => expect(formatDate({ value })).toEqual(test.value));
+  it('with value', () => expect(dateFormat({ value })).toEqual(test.value));
 
   Object.keys(TESTS).forEach((locale) =>
     describe(`locale:${locale}`, () => {
       const test = TESTS[locale];
 
-      it(`with options`, () => expect(formatDate({ locale, options })).toEqual(test.options));
+      it(`with options`, () => expect(dateFormat({ locale, options })).toEqual(test.options));
 
-      it(`with value`, () => expect(formatDate({ locale, value })).toEqual(test.value));
+      it(`with value`, () => expect(dateFormat({ locale, value })).toEqual(test.value));
     }),
   );
 });

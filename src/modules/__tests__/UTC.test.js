@@ -2,7 +2,7 @@ import { UTC } from '../UTC';
 
 const DATE = new Date(1980, 3, 10, 5, 15, 45);
 
-describe('@helpers/UTC', () => {
+describe('@modules/UTC', () => {
   test('alive', () => {
     expect(UTC).toBeDefined();
   });

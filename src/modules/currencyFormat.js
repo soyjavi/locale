@@ -4,7 +4,7 @@ const FRACTION_DIGITS = {
   [DEFAULT_LOCALE]: 2,
 };
 
-export const formatCurrency = ({ currency = DEFAULT_CURRENCY, locale = DEFAULT_LOCALE, value = 0 } = {}) => {
+export const currencyFormat = ({ currency = DEFAULT_CURRENCY, locale = DEFAULT_LOCALE, value = 0 } = {}) => {
   const formatter = new Intl.NumberFormat(locale, {
     style: 'currency',
     currency,

@@ -7,7 +7,7 @@ const FORMAT = {
   day: ['numeric', '2-digit'],
 };
 
-export const formatDate = ({ locale = DEFAULT_LOCALE, options = {}, value = new Date(1980, 3, 10) } = {}) => {
+export const dateFormat = ({ locale = DEFAULT_LOCALE, options = {}, value = new Date(1980, 3, 10) } = {}) => {
   const parseOptions = {};
 
   Object.keys(options).forEach((key) => {
