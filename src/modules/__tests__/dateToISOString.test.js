@@ -10,4 +10,12 @@ describe('@modules/dateToISOString', () => {
   test('Naive use', () => {
     expect(dateToISOString(DATE)).toEqual('1980/04/10');
   });
+
+  test('Using a custom delimiter', () => {
+    expect(dateToISOString(DATE, '-')).toEqual('1980-04-10');
+  });
+
+  test('with an incorrect value', () => {
+    expect(dateToISOString('soyjavi')).toEqual(undefined);
+  });
 });

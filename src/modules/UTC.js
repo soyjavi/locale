@@ -1,1 +1,4 @@
-export const UTC = (date) => new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0));
+import { isDate } from './isDate';
+
+export const UTC = (value) =>
+  isDate(value) ? new Date(Date.UTC(value.getFullYear(), value.getMonth(), value.getDate(), 0, 0, 0, 0)) : undefined;
