@@ -36,7 +36,7 @@ describe('modules/dateFormat()', () => {
 
   it('should be sane', () => expect(dateFormat()).toEqual('10/4/1980'));
 
-  it('with options', () => expect(dateFormat(undefined, { options })).toEqual(test.options));
+  it('with options', () => expect(dateFormat(undefined, { ...options })).toEqual(test.options));
 
   it('with value', () => expect(dateFormat(value)).toEqual(test.value));
 
@@ -44,7 +44,7 @@ describe('modules/dateFormat()', () => {
     describe(`locale:${locale}`, () => {
       const test = TESTS[locale];
 
-      it(`with options`, () => expect(dateFormat(undefined, { locale, options })).toEqual(test.options));
+      it(`with options`, () => expect(dateFormat(undefined, { locale, ...options })).toEqual(test.options));
 
       it(`with value`, () => expect(dateFormat(value, { locale })).toEqual(test.value));
     }),
