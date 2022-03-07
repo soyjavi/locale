@@ -1,5 +1,5 @@
 export * from './isDate';
-export * from './currencyDormat';
+export * from './currencyFormat';
 export * from './dateFormat';
 export * from './dateToISOString';
 export * from './parseDate';
