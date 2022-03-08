@@ -5,6 +5,9 @@ const MONTH = 'MM';
 const DAY = 'DD';
 
 export const parseDate = (value = '', format = `${DAY}/${MONTH}/${YEAR}`) => {
+  if (typeof value !== 'string') return undefined;
+
+  const today = UTC(new Date());
   const delimiter = format.includes('/') ? '/' : format.includes('-') ? '-' : undefined;
   let date = {};
 
@@ -20,5 +23,5 @@ export const parseDate = (value = '', format = `${DAY}/${MONTH}/${YEAR}`) => {
     });
   }
 
-  return UTC(new Date(date.Y, date.M || 0, date.D || 1, 0, 0, 0));
+  return UTC(new Date(date.Y || today.getFullYear(), date.M || today.getMonth(), date.D || today.getDate()));
 };
