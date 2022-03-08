@@ -1,6 +1,6 @@
 {
   "name": "@soyjavi/locale",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "repository": "https://github.com/soyjavi/locale",
   "author": "JΛVI <hello@soyjavi.com>",
   "license": "MIT",
@@ -15,9 +15,9 @@
     "lint": "eslint --cache --fix --format codeframe --ext .jsx,.js src",
     "test": "react-scripts test --passWithNoTests --watchAll=false",
     "test:watch": "react-scripts test --passWithNoTests",
-    "pipeline": "yarn lint && yarn test && yarn build && yarn publish:release",
+    "pipeline": "yarn lint && yarn test && yarn build",
     "postversion": "git push --set-upstream origin main && git push --tags",
-    "publish:release": "yarn version --patch && yarn publish --access public"
+    "release": "yarn pipeline && yarn version --patch && yarn publish --access public"
   },
   "dependencies": {
     "react": "^17.0.2",
