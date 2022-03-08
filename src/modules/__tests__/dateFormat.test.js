@@ -1,6 +1,8 @@
 import { DEFAULT_LOCALE } from '../../Locale.definition';
 import { dateFormat } from '../dateFormat';
 
+const DATE = new Date(1980, 3, 10);
+
 const TESTS = {
   'es-ES': {
     options: 'jueves, 10 de abril de 1980',
@@ -34,19 +36,45 @@ describe('modules/dateFormat()', () => {
 
   const test = TESTS[DEFAULT_LOCALE];
 
-  it('should be sane', () => expect(dateFormat()).toEqual('10/4/1980'));
+  it('should be sane', () => {
+    expect(dateFormat()).toEqual(undefined);
+  });
 
-  it('with options', () => expect(dateFormat(undefined, { ...options })).toEqual(test.options));
+  it('with value', () => {
+    expect(dateFormat(value)).toEqual(test.value);
+  });
 
-  it('with value', () => expect(dateFormat(value)).toEqual(test.value));
+  it('with an incorrect value', () => {
+    expect(dateFormat('10/04/1980')).toEqual(undefined);
+  });
+
+  it('with format', () => {
+    expect(dateFormat(DATE, { format: 'DD/MM/YYYY' })).toEqual('10/04/1980');
+    expect(dateFormat(DATE, { format: 'YYYY/MM/DD' })).toEqual('1980/04/10');
+    expect(dateFormat(DATE, { format: 'MM/YY' })).toEqual('04/80');
+  });
+
+  it('with format & delimiter', () => {
+    expect(dateFormat(DATE, { delimiter: '-', format: 'DD-MM-YYYY' })).toEqual('10-04-1980');
+    expect(dateFormat(DATE, { delimiter: '-', format: 'YYYY-MM-DD' })).toEqual('1980-04-10');
+    expect(dateFormat(DATE, { delimiter: '-', format: 'MM-YY' })).toEqual('04-80');
+  });
+
+  it('with options', () => {
+    expect(dateFormat(DATE, { ...options })).toEqual(test.options);
+  });
 
   Object.keys(TESTS).forEach((locale) =>
     describe(`locale:${locale}`, () => {
       const test = TESTS[locale];
 
-      it(`with options`, () => expect(dateFormat(undefined, { locale, ...options })).toEqual(test.options));
+      it(`with options`, () => {
+        expect(dateFormat(DATE, { locale, ...options })).toEqual(test.options);
+      });
 
-      it(`with value`, () => expect(dateFormat(value, { locale })).toEqual(test.value));
+      it(`with value`, () => {
+        expect(dateFormat(value, { locale })).toEqual(test.value);
+      });
     }),
   );
 });

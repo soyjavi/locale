@@ -1,4 +1,6 @@
 import { DEFAULT_LOCALE } from '../locale.definition';
+import { isDate } from './isDate';
+import { UTC } from './UTC';
 
 const FORMAT = {
   weekday: ['long', 'short', 'narrow'],
@@ -7,12 +9,29 @@ const FORMAT = {
   day: ['numeric', '2-digit'],
 };
 
-export const dateFormat = (value = new Date(1980, 3, 10), { locale = DEFAULT_LOCALE, ...options } = {}) => {
-  const parseOptions = {};
+export const dateFormat = (value, { locale = DEFAULT_LOCALE, delimiter = '/', format, ...options } = {}) => {
+  if (!isDate(value)) return;
 
-  Object.keys(options).forEach((key) => {
-    if (FORMAT[key] && FORMAT[key].includes(options[key])) parseOptions[key] = options[key];
-  });
+  if (format) {
+    const [Y, M, D] = UTC(value).toISOString().substring(0, 10).split('-');
+    const mapValue = { Y, M, D };
 
-  return value.toLocaleDateString(locale, parseOptions);
+    const date = format
+      .split(delimiter)
+      .map((part) => {
+        const index = part.substring(0, 1);
+
+        return mapValue[index].substring(mapValue[index].length - part.length);
+      })
+      .join(delimiter);
+
+    return date;
+  } else {
+    const parseOptions = {};
+    Object.keys(options).forEach((key) => {
+      if (FORMAT[key] && FORMAT[key].includes(options[key])) parseOptions[key] = options[key];
+    });
+
+    return value.toLocaleDateString(locale, parseOptions);
+  }
 };
