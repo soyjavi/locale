@@ -3,8 +3,8 @@ import { UTC } from './UTC';
 
 const CONTEXTS = ['days', 'months', 'years'];
 
-export const dateAdd = (value, amount = 0, context = 'days') => {
-  if (!isDate(value) || !amount || !CONTEXTS.includes(context)) return;
+export const dateCalc = (value, amount = 0, context = 'days') => {
+  if (!isDate(value) || !amount || typeof amount !== 'number' || !CONTEXTS.includes(context)) return;
 
   const date = UTC(value);
 
