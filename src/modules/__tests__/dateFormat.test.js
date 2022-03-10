@@ -34,46 +34,50 @@ describe('modules/dateFormat()', () => {
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const value = new Date(2020, 0, 1);
 
-  const test = TESTS[DEFAULT_LOCALE];
+  const sample = TESTS[DEFAULT_LOCALE];
 
-  it('should be sane', () => {
+  test('alive', () => {
+    expect(dateFormat).toBeDefined();
+  });
+
+  test('should be sane', () => {
     expect(dateFormat()).toEqual(undefined);
   });
 
-  it('with value', () => {
-    expect(dateFormat(value)).toEqual(test.value);
+  test('with value', () => {
+    expect(dateFormat(value)).toEqual(sample.value);
   });
 
-  it('with an incorrect value', () => {
+  test('with an incorrect value', () => {
     expect(dateFormat('10/04/1980')).toEqual(undefined);
   });
 
-  it('with format', () => {
+  test('with format', () => {
     expect(dateFormat(DATE, { format: 'DD/MM/YYYY' })).toEqual('10/04/1980');
     expect(dateFormat(DATE, { format: 'YYYY/MM/DD' })).toEqual('1980/04/10');
     expect(dateFormat(DATE, { format: 'MM/YY' })).toEqual('04/80');
   });
 
-  it('with format & delimiter', () => {
+  test('with format & delimiter', () => {
     expect(dateFormat(DATE, { delimiter: '-', format: 'DD-MM-YYYY' })).toEqual('10-04-1980');
     expect(dateFormat(DATE, { delimiter: '-', format: 'YYYY-MM-DD' })).toEqual('1980-04-10');
     expect(dateFormat(DATE, { delimiter: '-', format: 'MM-YY' })).toEqual('04-80');
   });
 
-  it('with options', () => {
-    expect(dateFormat(DATE, { ...options })).toEqual(test.options);
+  test('with options', () => {
+    expect(dateFormat(DATE, { ...options })).toEqual(sample.options);
   });
 
   Object.keys(TESTS).forEach((locale) =>
     describe(`locale:${locale}`, () => {
-      const test = TESTS[locale];
+      const sample = TESTS[locale];
 
-      it(`with options`, () => {
-        expect(dateFormat(DATE, { locale, ...options })).toEqual(test.options);
+      test(`with options`, () => {
+        expect(dateFormat(DATE, { locale, ...options })).toEqual(sample.options);
       });
 
-      it(`with value`, () => {
-        expect(dateFormat(value, { locale })).toEqual(test.value);
+      test(`with value`, () => {
+        expect(dateFormat(value, { locale })).toEqual(sample.value);
       });
     }),
   );
