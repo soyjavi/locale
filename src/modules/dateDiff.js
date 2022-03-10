@@ -5,11 +5,11 @@ const MS_MONTH = MS_DAY * 30;
 const MS_YEAR = MS_DAY * 365;
 
 export const dateDiff = (from, to) => {
-  let days = 0;
-  let months = 0;
-  let years = 0;
+  let days;
+  let months;
+  let years;
 
-  if (isDate(from) && isDate(to)) {
+  if (isDate(from) && isDate(to) && from < to) {
     const diff = to.getTime() - from.getTime();
     days = parseInt(diff / MS_DAY, 10);
     months = parseInt(diff / MS_MONTH, 10);

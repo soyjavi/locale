@@ -17,10 +17,11 @@ describe('@modules/dateDiff', () => {
   });
 
   test('Incorrect use', () => {
-    expect(dateDiff()).toEqual({ days: 0, months: 0, years: 0 });
-    expect(dateDiff(DATE)).toEqual({ days: 0, months: 0, years: 0 });
-    expect(dateDiff(undefined, DATE)).toEqual({ days: 0, months: 0, years: 0 });
-    expect(dateDiff(DATE, '1980/04/10')).toEqual({ days: 0, months: 0, years: 0 });
-    expect(dateDiff('1980/04/10', DATE)).toEqual({ days: 0, months: 0, years: 0 });
+    expect(dateDiff()).toEqual({ days: undefined, months: undefined, years: undefined });
+    expect(dateDiff(DATE)).toEqual({ days: undefined, months: undefined, years: undefined });
+    expect(dateDiff(undefined, DATE)).toEqual({ days: undefined, months: undefined, years: undefined });
+    expect(dateDiff(NEXT_2_DAYS, DATE)).toEqual({ days: undefined, months: undefined, years: undefined });
+    expect(dateDiff(DATE, '1980/04/10')).toEqual({ days: undefined, months: undefined, years: undefined });
+    expect(dateDiff('1980/04/10', DATE)).toEqual({ days: undefined, months: undefined, years: undefined });
   });
 });
